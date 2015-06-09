@@ -1,5 +1,5 @@
 const SPEED = 350,
-    SLIP = 10;
+    SLIP = 2.5;
 
 function Player(game, x, y, spriteRef) {
     Phaser.Sprite.call(this, game, x, y, spriteRef);
@@ -12,6 +12,8 @@ Player.prototype.constructor = Player;
 Player.prototype.create = function () {
 
 }
+
+
 
 Player.prototype.update = function () {
 
@@ -28,8 +30,10 @@ Player.prototype.update = function () {
     }
 
     if (leftKey.isDown) {
+        this.scale.setTo(-1, 1);
         this.body.velocity.x = -SPEED;
     } else if (rightKey.isDown) {
+        this.scale.setTo(1, 1);
         this.body.velocity.x = SPEED;
     } else {
         if (this.body.velocity.x != 0) {

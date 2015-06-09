@@ -13,12 +13,13 @@ function preload() {
 function create() {
     game.stage.backgroundColor = '#66ffff';
 
-    var p = new Player(game, HEIGHT - 32, 0, "player");
+    var p = new Player(game, 0, 0, "player");
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.enable(p, Phaser.Physics.ARCADE);
     p.body.collideWorldBounds = true;
     game.physics.arcade.gravity.y = 250;
+    p.anchor.setTo(.5, .5);
 
 }
 
