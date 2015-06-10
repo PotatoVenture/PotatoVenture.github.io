@@ -1,5 +1,7 @@
 const SPEED = 350,
-    SLIP = 2.5;
+    SLIP = 10;
+
+var onIce = false;
 
 function Player(game, x, y, spriteRef) {
     Phaser.Sprite.call(this, game, x, y, spriteRef);
@@ -13,8 +15,6 @@ Player.prototype.create = function () {
 
 }
 
-
-
 Player.prototype.update = function () {
 
     var jumpTimer = 0;
@@ -24,7 +24,7 @@ Player.prototype.update = function () {
     var leftKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
     var rightKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
 
-    if (upKey.isDown && this.body.onFloor() && game.time.now > jumpTimer) {
+    if (upKey.isDown) {
         this.body.velocity.y = -250;
         jumpTimer = game.time.now + 750;
     }
@@ -36,14 +36,33 @@ Player.prototype.update = function () {
         this.scale.setTo(1, 1);
         this.body.velocity.x = SPEED;
     } else {
-        if (this.body.velocity.x != 0) {
-            if (this.body.velocity.x > 0) {
-                this.body.velocity.x -= SLIP;
-            }
+        if (onIce) {
+            if (this.body.velocity.x != 0) {
+                if (this.body.velocity.x > 0) {
+                    this.body.velocity.x -= SLIP;
+                }
 
-            if (this.body.velocity.x < 0) {
-                this.body.velocity.x += SLIP;
+                if (this.body.velocity.x < 0) {
+                    this.body.velocity.x += SLIP;
+                }
+            }
+        } else {
+            if (this.body.velocity.x != 0) {
+                if (this.body.velocity.x > 0) {
+                    this.body.velocity.x -= 25;
+                }
+
+                if (this.body.velocity.x < 0) {
+                    this.body.velocity.x += 25;
+                }
             }
         }
+
+    }
+
+    if (this.body.touching.down == true) {
+        console.log("true");
+    } else {
+        console.log("false");
     }
 }
