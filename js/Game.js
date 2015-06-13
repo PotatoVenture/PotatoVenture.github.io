@@ -24,23 +24,15 @@ function create() {
     game.physics.arcade.gravity.y = 250;
     p.anchor.setTo(0.5, 0.5);
 
-    grassBlocks = game.add.group();
-    grassBlocks.enableBody = true;
-
-    for (i = 0; i < WIDTH + 32; i += 32) {
-        var grassBlock = grassBlocks.create(i, HEIGHT - 32, 'grass');
-        grassBlock.body.collideWorldBounds = true;
-    }
-
 }
 
 function update() {
 
     //Collisions
-    game.physics.arcade.collide(p, grassBlocks, isOnFloor);
+
 
 }
 
 function isOnFloor() {
-    console.log("this changes things");
+
 }
