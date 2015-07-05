@@ -1,8 +1,3 @@
-const SPEED = 350,
-    SLIP = 10;
-
-var onIce = false;
-
 function Player(game, x, y, spriteRef) {
     Phaser.Sprite.call(this, game, x, y, spriteRef);
     game.add.existing(this);
@@ -11,49 +6,52 @@ function Player(game, x, y, spriteRef) {
 Player.prototype = Object.create(Phaser.Sprite.prototype);
 Player.prototype.constructor = Player;
 
-Player.prototype.create = function () {
+Player.prototype.create = function () {}
 
-}
+doJump = false;
+doJumpTimer = 30;
 
 Player.prototype.update = function () {
+    this.anchor.setTo(0.5, 0.5);
+    gravitySpeed = 4;
+
+    xSpeed = 0;
+    ySpeed = 0;
 
     var upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
     var downKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
     var leftKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
     var rightKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
 
-    if (upKey.isDown && this.body.onFloor()) {
-        this.body.velocity.y = -250;
+    //Gravity
+    if (this.y < HEIGHT - (58 / 2)) {
+        this.y += gravitySpeed;
+    } else {
+        if (upKey.isDown) {
+            doJumpTimer = 30;
+        }
+    }
+
+    if (rightKey.isDown) {
+        xSpeed = 6;
+        this.scale.setTo(1, 1);
     }
 
     if (leftKey.isDown) {
+        xSpeed = -6;
         this.scale.setTo(-1, 1);
-        this.body.velocity.x = -SPEED;
-    } else if (rightKey.isDown) {
-        this.scale.setTo(1, 1);
-        this.body.velocity.x = SPEED;
-    } else {
-        if (onIce) {
-            if (this.body.velocity.x != 0) {
-                if (this.body.velocity.x > 0) {
-                    this.body.velocity.x -= SLIP;
-                }
-
-                if (this.body.velocity.x < 0) {
-                    this.body.velocity.x += SLIP;
-                }
-            }
-        } else {
-            if (this.body.velocity.x != 0) {
-                if (this.body.velocity.x > 0) {
-                    this.body.velocity.x -= 25;
-                }
-
-                if (this.body.velocity.x < 0) {
-                    this.body.velocity.x += 25;
-                }
-            }
-        }
-
     }
+
+    if (upKey.isDown) {
+        doJump = true;
+    }
+
+    if (doJump == true && doJumpTimer > 0) {
+        ySpeed = -doJumpTimer / 2
+        doJumpTimer--;
+    }
+
+    this.x += xSpeed;
+    this.y += ySpeed;
+
 }
