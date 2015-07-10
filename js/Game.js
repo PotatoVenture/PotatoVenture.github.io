@@ -18,6 +18,7 @@ function create() {
     const PLAYERWIDTH = 58,
         PLAYERHEIGHT = PLAYERWIDTH;
     p = new Player(game, PLAYERWIDTH / 2, PLAYERHEIGHT / 2, 'player');
+    var grassBlock = game.add.sprite(0, HEIGHT - 32, 'grass');
 
 }
 
