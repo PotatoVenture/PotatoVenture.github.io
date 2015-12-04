@@ -7,7 +7,8 @@ var WIDTH = 800,
     	updates = 0;
 
 var col = {
-	black: "#000"
+	black: "#000",
+	white: "#fff"
 };
 
 canvas.width = WIDTH;
@@ -31,7 +32,6 @@ function create() {
     //Creating The Player
     p = new Player(50, 76, 64, 64, "blue");
     p.create();
-
     loop();
 }
 function loop() {
@@ -51,7 +51,14 @@ function render() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = col.black;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 	p.render();
+
+	//GUI Layer
+	ctx.fillStyle = col.white;
+	ctx.font = "14px Arial";
+	ctx.textAlign = "right";
+	ctx.fillText("Alpha 0.0.0.2", canvas.width, 14);
 }
 
 init();
