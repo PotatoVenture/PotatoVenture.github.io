@@ -31,6 +31,7 @@ function create() {
     //Creating The Player
     p = new Player(50, 76, 64, 64, "blue");
     p.create();
+
     loop();
 }
 function loop() {
