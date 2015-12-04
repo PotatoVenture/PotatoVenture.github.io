@@ -3,8 +3,10 @@ var ctx = canvas.getContext("2d");
 
 var WIDTH = 800,
     HEIGHT = 600,
-    FPS = 60,
-    	updates = 0;
+    FPS_CAP = 60,
+    	updates = 0,
+		lastRun,
+		fps;
 
 var col = {
 	black: "#000",
@@ -37,9 +39,18 @@ function create() {
 function loop() {
 	setTimeout(function () {
 		requestAnimationFrame(loop);
+
+		if (!lastRun) {
+			lastRun = new Date().getTime();
+			return;
+		}
+		var delta = (new Date().getTime() - lastRun) / 1000;
+		lastRun = new Date().getTime();
+		fps = 1 / delta;
+
 		update();
 		render();
-	}, 1000 / FPS);
+	}, 1000 / FPS_CAP);
 }
 
 function update() {
@@ -59,6 +70,9 @@ function render() {
 	ctx.font = "14px Arial";
 	ctx.textAlign = "right";
 	ctx.fillText("Alpha 0.0.0.2", canvas.width, 14);
+
+	ctx.textAlign = "left";
+	ctx.fillText("fps " + Math.floor(fps), 10, 15);
 }
 
 init();
