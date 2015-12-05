@@ -96,7 +96,7 @@ function render() {
 	ctx.fillStyle = col.white;
 	ctx.font = "14px Arial";
 	ctx.textAlign = "right";
-	ctx.fillText("Alpha 0.0.0.2", canvas.width, 14);
+	ctx.fillText("Alpha 0.0.0.3", canvas.width, 14);
 
 	ctx.textAlign = "left";
 	ctx.fillText("fps " + Math.floor(fps), 10, 15);
