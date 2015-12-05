@@ -35,6 +35,26 @@ function create() {
     p = new Player(50, 76, 64, 64, "blue");
     p.create();
     loop();
+
+
+
+
+    objects = [{"id": "white_block", "x": 450, "y": 234, "w": 76, "h": 129, "c": "white"},
+    			   {"id": "pink_block", "x": 200, "y" : 104, "w":  367, "h": 67, "c": "pink"}];
+
+
+   //b = new defaultBlock(450, 234, 76, 129, "white");
+   //b1 = new defaultBlock(200, 104, 367, 67, "pink");
+
+
+
+
+
+
+
+
+
+
 }
 function loop() {
 	setTimeout(function () {
@@ -64,6 +84,13 @@ function render() {
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	p.render();
+
+	//Render All Objects
+	for (i = 0; i < objects.length; i ++) {
+		var ref = objects[i];
+		var b = new renderBlock(ref.x, ref.y, ref.w, ref.h, ref.c);
+		b.render();
+	}
 
 	//GUI Layer
 	ctx.fillStyle = col.white;

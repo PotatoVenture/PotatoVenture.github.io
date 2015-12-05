@@ -1,5 +1,5 @@
 ﻿//Default Block
-var defaultBlock = function (x, y, w, h, c) {
+var renderBlock = function (x, y, w, h, c) {
 	this.x = x;
 	this.y = y;
 	this.w = w;
@@ -7,9 +7,9 @@ var defaultBlock = function (x, y, w, h, c) {
 	this.c = c;
 }
 
-defaultBlock.prototype.update = function () { }
+renderBlock.prototype.update = function () {}
 
-defaultBlock.prototype.render = function() {
+renderBlock.prototype.render = function() {
 	ctx.fillStyle = this.c;
 
 	ctx.fillRect(this.x, this.y, this.w, this.h);

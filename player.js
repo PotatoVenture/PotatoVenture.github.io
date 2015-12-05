@@ -61,23 +61,51 @@ Player.prototype.update = function () {
 	this.speed = 6;
 
 	if (Key.isDown(Key.UP)) {
-		this.y -= this.speed;
+		var target = objects[0];
+		if (!placeMeeting(this.x, this.y - this.speed, this.w, this.h, target.x, target.y, target.w, target.h) ) {
+			this.y -= this.speed;
+		}
+		else if (!placeMeeting(this.x, this.y - 1, this.w, this.h, target.x, target.y, target.w, target.h)) {
+			this.y -= 1;
+		}
 	}
 
 	if (Key.isDown(Key.RIGHT)) {
-		this.x += this.speed;
+		var target = objects[0];
+		if (!placeMeeting(this.x + this.speed, this.y, this.w, this.h, target.x, target.y, target.w, target.h) ) {
+			this.x += this.speed;
+		}
+		else if (!placeMeeting(this.x + 1, this.y, this.w, this.h, target.x, target.y, target.w, target.h)) {
+			this.x += 1;
+		}
 	}
 
 	if (Key.isDown(Key.DOWN)) {
-		this.y += this.speed;
+		var target = objects[0];
+		if (!placeMeeting(this.x, this.y + this.speed, this.w, this.h, target.x, target.y, target.w, target.h) ) {
+			this.y += this.speed;
+		}
+		else if (!placeMeeting(this.x, this.y + 1, this.w, this.h, target.x, target.y, target.w, target.h)) {
+			this.y += 1;
+		}
 	}
 
 	if (Key.isDown(Key.LEFT)) {
-		this.x -= this.speed;
+		var target = objects[0];
+		if (!placeMeeting(this.x - this.speed, this.y, this.w, this.h, target.x, target.y, target.w, target.h) ) {
+			this.x -= this.speed;
+		}
+		else if (!placeMeeting(this.x - 1, this.y, this.w, this.h, target.x, target.y, target.w, target.h)) {
+			this.x -= 1;
+		}
 	}
 }
 
 Player.prototype.render = function () {
 	ctx.fillStyle = this.c;
 	ctx.fillRect(this.x, this.y, this.w, this.h);
+}
+
+function placeMeeting(ax, ay, aw, ah, bx, by, bw, bh) {
+	return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
 }
