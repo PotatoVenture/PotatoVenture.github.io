@@ -32,15 +32,15 @@ function start() {
 
 function create() {
     //Creating The Player
-    p = new Player(50, 76, 64, 64, "blue");
+    p = new Player(500, 186, 64, 64, "blue");
     p.create();
     loop();
 
 
 
 
-    objects = [{"id": "white_block", "x": 450, "y": 234, "w": 76, "h": 129, "c": "white"},
-    			   {"id": "pink_block", "x": 200, "y" : 104, "w":  367, "h": 67, "c": "pink"}];
+    objects = [{"id": "white_block", "x": 450, "y": 300, "w": 76, "h": 129, "c": "white"},
+    			   {"id": "pink_block", "x": 0, "y" : 0, "w":  367, "h": 67, "c": "pink"}];
 
 
    //b = new defaultBlock(450, 234, 76, 129, "white");
