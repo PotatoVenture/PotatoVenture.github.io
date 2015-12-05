@@ -62,7 +62,7 @@ Player.prototype.update = function () {
 
 	if (Key.isDown(Key.UP)) {
 		var notcollidedspeed = -1;
-		var notcollided1 = -1;
+		var notcollided1 = 0;
 		for (i = 0; i < objects.length; i ++) {
 			var target = objects[i];
 			if (!placeMeeting(this.x, this.y - this.speed, this.w, this.h, target.x, target.y, target.w, target.h) ) {
@@ -83,7 +83,7 @@ Player.prototype.update = function () {
 
 	if (Key.isDown(Key.RIGHT)) {
 		var notcollidedspeed = -1;
-		var notcollided1 = -1;
+		var notcollided1 = 0;
 		for (i = 0; i < objects.length; i ++) {
 			var target = objects[i];
 			if (!placeMeeting(this.x + this.speed, this.y, this.w, this.h, target.x, target.y, target.w, target.h) ) {
@@ -99,15 +99,21 @@ Player.prototype.update = function () {
 			else if (i == objects.length - 1  && i == notcollided1) {
 				this.x += 1;
 			}
+
+
+
+
+
+
 		}
 	}
 
 	if (Key.isDown(Key.DOWN)) {
 		var notcollidedspeed = -1;
-		var notcollided1 = -1;
+		var notcollided1 = 0;
 		for (i = 0; i < objects.length; i ++) {
 			var target = objects[i];
-			if (!placeMeeting(this.x, this.y + 1, this.w, this.h, target.x, target.y, target.w, target.h) ) {
+			if (!placeMeeting(this.x, this.y + this.speed, this.w, this.h, target.x, target.y, target.w, target.h) ) {
 				notcollidedspeed ++;
 			}
 			else if (!placeMeeting(this.x, this.y + 1, this.w, this.h, target.x, target.y, target.w, target.h)) {
@@ -125,7 +131,7 @@ Player.prototype.update = function () {
 
 	if (Key.isDown(Key.LEFT)) {
 		var notcollidedspeed = -1;
-		var notcollided1 = -1;
+		var notcollided1 = 0;
 		for (i = 0; i < objects.length; i ++) {
 			var target = objects[i];
 			if (!placeMeeting(this.x - this.speed, this.y, this.w, this.h, target.x, target.y, target.w, target.h) ) {
@@ -141,6 +147,8 @@ Player.prototype.update = function () {
 			else if (i == objects.length - 1  && i == notcollided1) {
 				this.x -= 1;
 			}
+
+			//console.log("ncs: " + notcollidedspeed + ", nc1: " + notcollided1 + ", ol: " + objects.length + ", i: " + i);
 		}
 	}
 }

@@ -40,7 +40,7 @@ function create() {
 
 
     objects = [{"id": "white_block", "x": 450, "y": 300, "w": 76, "h": 129, "c": "white"},
-    			   {"id": "pink_block", "x": 0, "y" : 0, "w":  367, "h": 67, "c": "pink"}];
+    			   {"id": "pink_block", "x": 200, "y" : 104, "w":  367, "h": 67, "c": "pink"}];
 
 
    //b = new defaultBlock(450, 234, 76, 129, "white");
