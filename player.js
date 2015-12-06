@@ -67,6 +67,7 @@ Player.prototype.update = function () {
 			var target = objects[i];
 			if (!placeMeeting(this.x + offsetX, this.y - this.speed + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h) ) {
 				notcollidedspeed ++;
+				notcollided1 ++;
 			}
 			else if (!placeMeeting(this.x + offsetX, this.y - 1 + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h)) {
 				notcollided1 ++;
@@ -76,7 +77,7 @@ Player.prototype.update = function () {
 				this.y -= this.speed;
 				offsetY += this.speed;
 			}
-			else if (i == objects.length - 1  && i == notcollided1) {
+			else if (i == objects.length - 1  && i < notcollided1) {
 				this.y -= 1;
 				offsetY ++;
 			}
@@ -90,6 +91,7 @@ Player.prototype.update = function () {
 			var target = objects[i];
 			if (!placeMeeting(this.x + this.speed + offsetX, this.y + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h) ) {
 				notcollidedspeed ++;
+				notcollided1 ++;
 			}
 			else if (!placeMeeting(this.x + 1 + offsetX, this.y + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h)) {
 				notcollided1 ++;
@@ -99,7 +101,7 @@ Player.prototype.update = function () {
 				this.x += this.speed;
 				offsetX -= this.speed;
 			}
-			else if (i == objects.length - 1  && i == notcollided1) {
+			else if (i == objects.length - 1  && i < notcollided1) {
 				this.x += 1;
 				offsetX --;
 			}
@@ -119,6 +121,7 @@ Player.prototype.update = function () {
 			var target = objects[i];
 			if (!placeMeeting(this.x + offsetX, this.y + this.speed + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h) ) {
 				notcollidedspeed ++;
+				notcollided1 ++;
 			}
 			else if (!placeMeeting(this.x + offsetX, this.y + 1 + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h)) {
 				notcollided1 ++;
@@ -128,7 +131,7 @@ Player.prototype.update = function () {
 				this.y += this.speed;
 				offsetY -= this.speed;
 			}
-			else if (i == objects.length - 1  && i == notcollided1) {
+			else if (i == objects.length - 1  && i < notcollided1) {
 				this.y += 1;
 				offsetY --;
 			}
@@ -142,6 +145,7 @@ Player.prototype.update = function () {
 			var target = objects[i];
 			if (!placeMeeting(this.x - this.speed + offsetX, this.y + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h) ) {
 				notcollidedspeed ++;
+				notcollided1 ++;
 			}
 			else if (!placeMeeting(this.x - 1 + offsetX, this.y + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h)) {
 				notcollided1 ++;
@@ -151,12 +155,12 @@ Player.prototype.update = function () {
 				this.x -= this.speed;
 				offsetX += this.speed;
 			}
-			else if (i == objects.length - 1  && i == notcollided1) {
+			else if (i == objects.length - 1  && i < notcollided1) {
 				this.x -= 1;
 				offsetX ++;
 			}
 
-			//console.log("ncs: " + notcollidedspeed + ", nc1: " + notcollided1 + ", ol: " + objects.length + ", i: " + i);
+			console.log("ncs: " + notcollidedspeed + ", nc1: " + notcollided1 + ", ol: " + objects.length + ", i: " + i);
 		}
 	}
 }

@@ -39,23 +39,8 @@ function create() {
     p.create();
     loop();
 
-
-
-
     objects = [{"id": "white_block", "x": 600, "y": 400, "w": 76, "h": 129, "c": "white"},
     			   {"id": "pink_block", "x": 200, "y" : 104, "w":  367, "h": 67, "c": "pink"}];
-
-
-   //b = new defaultBlock(450, 234, 76, 129, "white");
-   //b1 = new defaultBlock(200, 104, 367, 67, "pink");
-
-
-
-
-
-
-
-
 
 
 }
@@ -89,7 +74,7 @@ function render() {
 	p.render();
 
 	//Render All Objects
-	for (i = 0; i < objects.length; i ++) {
+	for (i = -0; i < objects.length; i ++) {
 		var ref = objects[i];
 		var b = new renderBlock(ref.x, ref.y, ref.w, ref.h, ref.c);
 		b.render();
