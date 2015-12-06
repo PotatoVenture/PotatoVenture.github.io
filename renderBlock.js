@@ -12,5 +12,5 @@ renderBlock.prototype.update = function () {}
 renderBlock.prototype.render = function() {
 	ctx.fillStyle = this.c;
 
-	ctx.fillRect(this.x, this.y, this.w, this.h);
+	ctx.fillRect(this.x + offsetX, this.y + offsetY, this.w, this.h);
 }

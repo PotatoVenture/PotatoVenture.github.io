@@ -65,18 +65,20 @@ Player.prototype.update = function () {
 		var notcollided1 = 0;
 		for (i = 0; i < objects.length; i ++) {
 			var target = objects[i];
-			if (!placeMeeting(this.x, this.y - this.speed, this.w, this.h, target.x, target.y, target.w, target.h) ) {
+			if (!placeMeeting(this.x + offsetX, this.y - this.speed + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h) ) {
 				notcollidedspeed ++;
 			}
-			else if (!placeMeeting(this.x, this.y - 1, this.w, this.h, target.x, target.y, target.w, target.h)) {
+			else if (!placeMeeting(this.x + offsetX, this.y - 1 + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h)) {
 				notcollided1 ++;
 			}
 
 			if(i == objects.length - 1 && i == notcollidedspeed) {
 				this.y -= this.speed;
+				offsetY += this.speed;
 			}
 			else if (i == objects.length - 1  && i == notcollided1) {
 				this.y -= 1;
+				offsetY ++;
 			}
 		}
 	}
@@ -86,18 +88,20 @@ Player.prototype.update = function () {
 		var notcollided1 = 0;
 		for (i = 0; i < objects.length; i ++) {
 			var target = objects[i];
-			if (!placeMeeting(this.x + this.speed, this.y, this.w, this.h, target.x, target.y, target.w, target.h) ) {
+			if (!placeMeeting(this.x + this.speed + offsetX, this.y + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h) ) {
 				notcollidedspeed ++;
 			}
-			else if (!placeMeeting(this.x + 1, this.y, this.w, this.h, target.x, target.y, target.w, target.h)) {
+			else if (!placeMeeting(this.x + 1 + offsetX, this.y + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h)) {
 				notcollided1 ++;
 			}
 
 			if(i == objects.length - 1 && i == notcollidedspeed) {
 				this.x += this.speed;
+				offsetX -= this.speed;
 			}
 			else if (i == objects.length - 1  && i == notcollided1) {
 				this.x += 1;
+				offsetX --;
 			}
 
 
@@ -113,18 +117,20 @@ Player.prototype.update = function () {
 		var notcollided1 = 0;
 		for (i = 0; i < objects.length; i ++) {
 			var target = objects[i];
-			if (!placeMeeting(this.x, this.y + this.speed, this.w, this.h, target.x, target.y, target.w, target.h) ) {
+			if (!placeMeeting(this.x + offsetX, this.y + this.speed + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h) ) {
 				notcollidedspeed ++;
 			}
-			else if (!placeMeeting(this.x, this.y + 1, this.w, this.h, target.x, target.y, target.w, target.h)) {
+			else if (!placeMeeting(this.x + offsetX, this.y + 1 + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h)) {
 				notcollided1 ++;
 			}
 
 			if(i == objects.length - 1 && i == notcollidedspeed) {
 				this.y += this.speed;
+				offsetY -= this.speed;
 			}
 			else if (i == objects.length - 1  && i == notcollided1) {
 				this.y += 1;
+				offsetY --;
 			}
 		}
 	}
@@ -134,18 +140,20 @@ Player.prototype.update = function () {
 		var notcollided1 = 0;
 		for (i = 0; i < objects.length; i ++) {
 			var target = objects[i];
-			if (!placeMeeting(this.x - this.speed, this.y, this.w, this.h, target.x, target.y, target.w, target.h) ) {
+			if (!placeMeeting(this.x - this.speed + offsetX, this.y + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h) ) {
 				notcollidedspeed ++;
 			}
-			else if (!placeMeeting(this.x - 1, this.y, this.w, this.h, target.x, target.y, target.w, target.h)) {
+			else if (!placeMeeting(this.x - 1 + offsetX, this.y + offsetY, this.w, this.h, target.x + offsetX, target.y + offsetY, target.w, target.h)) {
 				notcollided1 ++;
 			}
 
 			if(i == objects.length - 1 && i == notcollidedspeed) {
 				this.x -= this.speed;
+				offsetX += this.speed;
 			}
 			else if (i == objects.length - 1  && i == notcollided1) {
 				this.x -= 1;
+				offsetX ++;
 			}
 
 			//console.log("ncs: " + notcollidedspeed + ", nc1: " + notcollided1 + ", ol: " + objects.length + ", i: " + i);
@@ -153,8 +161,13 @@ Player.prototype.update = function () {
 	}
 }
 Player.prototype.render = function () {
+
+	//offsetX -= 0.5;
+	//offsetY -= 0.5;
+
 	ctx.fillStyle = this.c;
-	ctx.fillRect(this.x, this.y, this.w, this.h);
+	//ctx.fillRect(this.x + offsetX, this.y + offsetY, this.w, this.h);
+	ctx.fillRect(this.x + offsetX, this.y + offsetY, this.w, this.h);
 }
 
 function placeMeeting(ax, ay, aw, ah, bx, by, bw, bh) {
