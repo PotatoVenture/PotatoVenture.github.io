@@ -69,7 +69,7 @@ function update() {
 function render() {
 	ctx.clearRect(-1000,-1000, 2000, 2000);
 	ctx.fillStyle = col.black;
-	ctx.fillRect(offsetX, offsetY, canvas.width, canvas.height);
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	p.render();
 
@@ -84,10 +84,10 @@ function render() {
 	ctx.fillStyle = col.white;
 	ctx.font = "14px Arial";
 	ctx.textAlign = "right";
-	ctx.fillText("Alpha 0.0.0.3", canvas.width + offsetX, 14 + offsetY);
+	ctx.fillText("Alpha 0.0.0.3", canvas.width, 14);
 
 	ctx.textAlign = "left";
-	ctx.fillText("fps " + Math.floor(fps), 10 + offsetX, 15 + offsetY);
+	ctx.fillText("fps " + Math.floor(fps), 10, 15);
 }
 
 init();

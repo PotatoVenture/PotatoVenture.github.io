@@ -159,8 +159,6 @@ Player.prototype.update = function () {
 				this.x -= 1;
 				offsetX ++;
 			}
-
-			console.log("ncs: " + notcollidedspeed + ", nc1: " + notcollided1 + ", ol: " + objects.length + ", i: " + i);
 		}
 	}
 }
