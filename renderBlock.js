@@ -1,4 +1,4 @@
-﻿//Default Block
+//Default Block
 var renderBlock = function (x, y, w, h, c) {
 	this.x = x;
 	this.y = y;
